@@ -1,0 +1,15 @@
+server:
+  port: 3000
+
+db:
+  host: 'localhost'
+  type: 'mysql'
+  username: 'root'
+  password: 'root123!@'
+  port: 3306
+  database: 'micro'
+  synchronize: true
+
+jwt:
+  secret: 'Secret1234'
+  expiresIn: 1y
