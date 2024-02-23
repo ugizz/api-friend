@@ -20,11 +20,8 @@ export class FriendService {
     private friendRepository: FriendRepository,
   ) {}
 
-  async friendRequest(
-    friendRequestDto: FriendRequestDto,
-  ): Promise<FriendRequest> {
+  async friendRequest(friendRequestDto: FriendRequestDto): Promise<string> {
     const { nickname, user } = friendRequestDto;
-    console.log(nickname);
 
     const result = await lastValueFrom(
       this.authClient.send('checkNickname', nickname),

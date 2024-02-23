@@ -18,7 +18,7 @@ export class FriendController {
   @MessagePattern('request')
   async request(
     friendRequestDto: FriendRequestDto,
-  ): Promise<ResponseEntity<FriendRequest>> {
+  ): Promise<ResponseEntity<string>> {
     return ResponseEntity.OK_WITH(
       await this.friendService.friendRequest(friendRequestDto),
     );
