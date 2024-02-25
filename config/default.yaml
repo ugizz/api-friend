@@ -9,7 +9,3 @@ db:
   port: 3306
   database: 'micro'
   synchronize: true
-
-jwt:
-  secret: 'Secret1234'
-  expiresIn: 1y
