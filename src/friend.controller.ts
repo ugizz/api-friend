@@ -1,14 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
 import { FriendService } from './friend.service';
 import { MessagePattern } from '@nestjs/microservices';
-import { FriendRequestDto } from './dto/friend.request.dto';
+import { FriendRequestDto } from './data/dto/request/friend.request.dto';
 import { ResponseEntity } from './configs/ResponseEntity';
-import { FriendRequest } from './entity/friend.request.entity';
-import { FriendComplyDto } from './dto/friend.comply.dto';
-import { User } from './entity/user.entity';
-import { Friend } from './entity/friend.entity';
-import { FriendListDto } from './dto/friend.list.dto';
-import { FriendRequestListDto } from './dto/friend.request.list.dto';
+import { FriendRequest } from './data/entity/friend.request.entity';
+import { FriendComplyDto } from './data/dto/request/friend.comply.dto';
+import { User } from './data/entity/user.entity';
+import { Friend } from './data/entity/friend.entity';
+import { FriendListDto } from './data/dto/response/friend.list.dto';
+import { FriendRequestListDto } from './data/dto/response/friend.request.list.dto';
 
 @Controller()
 export class FriendController {
