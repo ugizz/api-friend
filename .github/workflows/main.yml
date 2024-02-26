@@ -52,6 +52,7 @@ jobs:
             JWT_SECRET=${{ secrets.JWT_SECRET }}
             JWT_EXPIRE=${{ secrets.JWT_EXPIRE }}
             FRIENDHOST=${{ secrets.FRIENDHOST }}
+            AUTHHOST=${{ secrets.AUTHHOST }}
   # 배포 Job
   deploy:
     needs: build # build 후에 실행되도록 정의

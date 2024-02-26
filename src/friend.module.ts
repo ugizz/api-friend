@@ -14,7 +14,10 @@ import { FriendRequestRepository } from './friend.request.repository';
       {
         name: 'AUTH',
         transport: Transport.TCP,
-        options: { port: 8101 },
+        options: {
+          port: 8101,
+          host: process.env.AUTHHOST || 'localhost',
+        },
       },
     ]),
     TypeOrmModule.forRoot(typeORMConfig),
