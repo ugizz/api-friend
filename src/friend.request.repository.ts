@@ -1,9 +1,10 @@
 import { DataSource, Repository } from 'typeorm';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Friend } from './data/entity/friend.entity';
 import { FriendRequest } from './data/entity/friend.request.entity';
 import { User } from './data/entity/user.entity';
 import { FriendRequestListDto } from './data/dto/response/friend.request.list.dto';
+import { ResponseEntity } from './configs/ResponseEntity';
 
 @Injectable()
 export class FriendRequestRepository extends Repository<FriendRequest> {
@@ -73,7 +74,7 @@ export class FriendRequestRepository extends Repository<FriendRequest> {
       .execute();
   }
 
-  async deleteRequest(requestId: Number): Promise<void> {
+  async deleteRequest(requestId: number): Promise<void> {
     await this.createQueryBuilder()
       .update()
       .set({ deleteAt: () => 'CURRENT_TIMESTAMP' })

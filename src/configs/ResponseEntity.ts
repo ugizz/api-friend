@@ -1,13 +1,12 @@
-import { HttpStatus } from "@nestjs/common";
-import { ResponseStatus } from "./ResponseStatus";
+import { HttpStatus } from '@nestjs/common';
+import { ResponseStatus } from './ResponseStatus';
 
 export class ResponseEntity<T> {
+  private readonly statusCode: number;
 
-    private readonly statusCode: number;
+  private readonly message: string;
 
-    private readonly message: string;
-
-    data: T;
+  data: T;
 
   public constructor(status: number, message: string, data: T) {
     this.statusCode = status;
@@ -22,7 +21,7 @@ export class ResponseEntity<T> {
   static OK_WITH<T>(data: T): ResponseEntity<T> {
     return new ResponseEntity<T>(ResponseStatus.OK, 'success', data);
   }
-  static OK_MSG<T>(msg: string ,data: T): ResponseEntity<T> {
+  static OK_MSG<T>(msg: string, data: T): ResponseEntity<T> {
     return new ResponseEntity<T>(ResponseStatus.OK, msg, data);
   }
 
@@ -34,9 +33,8 @@ export class ResponseEntity<T> {
     );
   }
 
-
   static ERROR_WITH(
-    status : HttpStatus,
+    status: ResponseStatus.SERVER_ERROR,
     message: string,
   ): ResponseEntity<string> {
     return new ResponseEntity<string>(status, message, '');
@@ -49,7 +47,4 @@ export class ResponseEntity<T> {
   ): ResponseEntity<T> {
     return new ResponseEntity<T>(code, message, data);
   }
-    
 }
-
-

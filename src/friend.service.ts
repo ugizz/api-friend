@@ -71,7 +71,14 @@ export class FriendService {
     return await this.friendRequestRepository.findToUser(user.userId);
   }
 
-  async deleteFriendRequest(requestId: Number): Promise<void> {
+  async deleteFriendRequest(requestId: number): Promise<void> {
+    if (
+      !(await this.friendRequestRepository.exists({
+        where: { friendId: requestId },
+      }))
+    ) {
+      throw new BadRequestException('없는 request id 입니다.');
+    }
     return await this.friendRequestRepository.deleteRequest(requestId);
   }
 }
