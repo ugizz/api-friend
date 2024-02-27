@@ -1,10 +1,8 @@
 import { DataSource, Repository } from 'typeorm';
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { Friend } from './data/entity/friend.entity';
+import { Injectable } from '@nestjs/common';
 import { FriendRequest } from './data/entity/friend.request.entity';
 import { User } from './data/entity/user.entity';
 import { FriendRequestListDto } from './data/dto/response/friend.request.list.dto';
-import { ResponseEntity } from './configs/ResponseEntity';
 
 @Injectable()
 export class FriendRequestRepository extends Repository<FriendRequest> {

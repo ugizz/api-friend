@@ -1,12 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { FriendService } from './friend.service';
 import { MessagePattern } from '@nestjs/microservices';
 import { FriendRequestDto } from './data/dto/request/friend.request.dto';
 import { ResponseEntity } from './configs/ResponseEntity';
-import { FriendRequest } from './data/entity/friend.request.entity';
 import { FriendComplyDto } from './data/dto/request/friend.comply.dto';
 import { User } from './data/entity/user.entity';
-import { Friend } from './data/entity/friend.entity';
 import { FriendListDto } from './data/dto/response/friend.list.dto';
 import { FriendRequestListDto } from './data/dto/response/friend.request.list.dto';
 
@@ -29,8 +27,12 @@ export class FriendController {
   async comply(
     friendComplyDto: FriendComplyDto,
   ): Promise<ResponseEntity<string>> {
-    await this.friendService.friendCreate(friendComplyDto);
-    return ResponseEntity.OK();
+    try {
+      await this.friendService.friendCreate(friendComplyDto);
+      return ResponseEntity.OK();
+    } catch (e) {
+      return ResponseEntity.ERROR_WITH('친구 요청 수락시 오류가 발생했습니다.');
+    }
   }
 
   // 친구 목록 조회
@@ -64,7 +66,11 @@ export class FriendController {
   // 친구 신청 거절
   @MessagePattern('requestRejct')
   async requestRejct(friendRequestId: number): Promise<ResponseEntity<string>> {
-    await this.friendService.deleteFriendRequest(friendRequestId);
-    return ResponseEntity.OK();
+    try {
+      await this.friendService.deleteFriendRequest(friendRequestId);
+      return ResponseEntity.OK();
+    } catch (e) {
+      return ResponseEntity.ERROR_WITH('친구 요청 삭제시 오류가 발생했습니다.');
+    }
   }
 }

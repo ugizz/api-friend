@@ -34,8 +34,8 @@ export class ResponseEntity<T> {
   }
 
   static ERROR_WITH(
-    status: ResponseStatus.SERVER_ERROR,
     message: string,
+    status: number = ResponseStatus.SERVER_ERROR,
   ): ResponseEntity<string> {
     return new ResponseEntity<string>(status, message, '');
   }

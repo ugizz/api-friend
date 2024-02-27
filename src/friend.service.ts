@@ -4,10 +4,8 @@ import { FriendRepository } from './friend.repository';
 import { FriendRequestRepository } from './friend.request.repository';
 import { FriendRequestDto } from './data/dto/request/friend.request.dto';
 import { User } from './data/entity/user.entity';
-import { FriendRequest } from './data/entity/friend.request.entity';
 import { FriendComplyDto } from './data/dto/request/friend.comply.dto';
-import { Friend } from './data/entity/friend.entity';
-import { Observable, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { FriendListDto } from './data/dto/response/friend.list.dto';
 import { FriendRequestListDto } from './data/dto/response/friend.request.list.dto';
 
